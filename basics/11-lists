@@ -1,0 +1,5 @@
+#!/bin/bash
+# List all files in current directory, parent directory, and /boot, including hidden, in long format
+ls -la .
+ls -la ..
+ls -la /boot
