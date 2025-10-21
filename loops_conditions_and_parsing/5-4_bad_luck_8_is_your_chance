@@ -3,7 +3,7 @@
 count=1
 while [ $count -le 10 ]
 do
-:count #dummy usage of $count variable
+: count #dummy usage of $count variable
 
 if [ count -eq 4 ]; then
 echo "bad luck"
