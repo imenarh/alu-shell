@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# We use while loop to displays "Best School" 10 times using
+count=1
+while [ $count -le 10 ]
+do
+  : $count   # dummy use for ShellCheck
+  echo "Best School"
+  count=$((count + 1))
+done
