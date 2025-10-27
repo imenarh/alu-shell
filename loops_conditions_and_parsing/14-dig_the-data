@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# 14-dig_the-data_clean
+# 14-dig_the-data
 # Groups visitors by IP and HTTP status, ordered by occurrence
-# Uses only awk, no loops in Bash
+# Must use awk only, no loops in Bash
 
 LOG_FILE="${1:-access.log}"
 
-# Exit if file is empty
+# Exit quietly if file doesn't exist or is empty
 [[ ! -s "$LOG_FILE" ]] && exit 0
 
-# Process log with awk and sort
+# Extract IP ($1) and HTTP code ($9), count occurrences, then sort numerically descending
 awk '{if (NF>=9 && $9 ~ /^[0-9]+$/) count[$1" "$9]++} 
-     END {for (k in count) print count[k], k}' "$LOG_FILE" | sort -nr
+     END {for (k in count) print count[k], k}' "$LOG_FILE" | sort -nr -k1,1
+
